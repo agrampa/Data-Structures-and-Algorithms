@@ -2,11 +2,11 @@
 
 const DLL = require('./dll.js');
 
-const DLLHashTable = module.exports = function(sixe=8192) {
+const DLLHashTable = module.exports = function(size=8192) {
   this.size = size;
   this.buckets = [...Array(this.size)];
   for(let i = 0; i < this.size; i++) {
-    this.buckets[i] = new DLL():
+    this.buckets[i] = new DLL();
   }
 };
 
@@ -14,7 +14,7 @@ const DLLHashTable = module.exports = function(sixe=8192) {
 DLLHashTable.prototype.hashKey = function(key) {
   if(!key) throw new Error('Key required');
 
-  let hash = kep.split('').reduce((acc, current) => acc + current.charCodeAt(0), 0) % this.size;
+  let hash = key.split('').reduce((acc, current) => acc + current.charCodeAt(0), 0) % this.size;
   return hash;
 };
 
@@ -35,6 +35,6 @@ DLLHashTable.prototype.get = function(key) {
 
 // O(1)
 DLLHashTable.prototype.remove = function(key) {
-    let address = this.hashKey(key);
-    this.buckets[address] ? this.buckets[address] = new DLL() : new Error('Invalid key');
+  let address = this.hashKey(key);
+  this.buckets[address] ? this.buckets[address] = new DLL() : new Error('Invalid key');
 };
