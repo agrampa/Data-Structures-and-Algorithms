@@ -17,3 +17,10 @@ DLLHashTable.prototype.hashKey = function(key) {
   let hash = kep.split('').reduce((acc, current) => acc + current.charCodeAt(0), 0) % this.size;
   return hash;
 };
+
+// O(1)
+DLLHashTable.prototype.set = function(key, value) {
+  if(!key || !value) throw new Error('Key required');
+
+  this.buckets[this.hashKey(key)].append(value);
+};
