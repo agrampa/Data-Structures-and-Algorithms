@@ -1,0 +1,21 @@
+{
+  "name": "hash-tables",
+  "version": "1.0.0",
+  "description": "Hash tables are used as a way to store data in an organized way. For example, letters can be converted to ASCII, then hashed to a specific index of the array. If more than one input evaluates to the same key, known as a key collision, the index of the array is represented as a doubly linked list of the keys at that specific index.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.0",
+    "faker": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
