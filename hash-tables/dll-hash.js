@@ -32,3 +32,9 @@ DLLHashTable.prototype.get = function(key) {
   if(this.buckets[this.hashKey(key)].head === null) return null;
   return this.buckets[this.hashKey(key)];
 };
+
+// O(1)
+DLLHashTable.prototype.remove = function(key) {
+    let address = this.hashKey(key);
+    this.buckets[address] ? this.buckets[address] = new DLL() : new Error('Invalid key');
+};
