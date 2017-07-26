@@ -24,3 +24,11 @@ DLLHashTable.prototype.set = function(key, value) {
 
   this.buckets[this.hashKey(key)].append(value);
 };
+
+// O(1)
+DLLHashTable.prototype.get = function(key) {
+  if(!key) throw new Error('Key required');
+
+  if(this.buckets[this.hashKey(key)].head === null) return null;
+  return this.buckets[this.hashKey(key)];
+};
