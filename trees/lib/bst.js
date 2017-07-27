@@ -70,3 +70,39 @@ bstNode.prototype.max = function(node) {
 
   return node.val;
 };
+
+// O(log n)
+bstNode.prototype.height = function(node) {
+  if(!node) return 0;
+
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+
+  return Math.max(leftHeight, righHeight) + 1;
+};
+
+// O(n)
+bstNode.fromArray = function(node, array) {
+  if(!array) return null;
+
+  for(let i = 0; i < array.length; i++) {
+    node.appendChild(array[i]);
+  }
+  return node;
+};
+
+// O(n)
+bstNode.prototype.isBalanced = function(node) {
+  if(!node) return null;
+
+  let leftHeight = this.height(node.left);
+  let rightHeight = this.height(node.right);
+
+  let difference = leftHeight - rightHeight;
+
+  if(Math.abs(difference) > 1) {
+    return false;
+  } else {
+    return true;
+  };
+};
