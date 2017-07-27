@@ -106,3 +106,55 @@ bstNode.prototype.isBalanced = function(node) {
     return true;
   };
 };
+
+// ** TRAVERSAL METHODS ** //
+
+// O(n)
+bstNode.prototype.breadthFirst = function() {
+  let queue = [this];
+  let result = '';
+  let current;
+
+  while(queue.length > 0) {
+    current = queue.pop();
+    result += current.val + '';
+    if(current.left) queue.unshift(current.left);
+    if(current.right) queue.unshift(current.right);
+  };
+  return result;
+};
+
+// O(n)
+bstNode.prototype.preOrder = function(cb) {
+  _walk(this);
+
+  function_walk(node) {
+    if(!node) return;
+    cb(node);
+    if(node.left) _walk(node.left);
+    if(node.right) _walk(node.right);
+  };
+};
+
+// O(n)
+bstNode.prototype.postOrder = function(cb) {
+  _walk(this);
+
+  function _walk(node) {
+    if(!node) return;
+    if(node.left) _walk(node.left);
+    if(node.right) _walk(node.right);
+    cb(node);
+  };
+};
+
+bstNode.prototype.inOrder = function(cb) {
+  _walk(this);
+
+  function _walk(node) {
+    if(!node) return;
+    if(node.left) _walk(node.left);
+    cb(node);
+    if(node.right) _walk(node.right);
+  };
+};
