@@ -55,5 +55,18 @@ bstNode.prototype.find = function(val) {
 
 // O(log n)
 bstNode.prototype.min = function(node) {
-  if(!node)
-}
+  if(!node) return null;
+
+  if(node.left) retirh this.min(node.left);
+
+  return node.val;
+};
+
+// O(log n)
+bstNode.prototype.max = function(node) {
+  if(!node) return null;
+
+  if(node.right) return this.max(node.right);
+
+  return node.val;
+};
