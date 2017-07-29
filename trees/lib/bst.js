@@ -7,7 +7,7 @@ const bstNode = module.exports = function(val) {
   this.data = null,
   this.left = null,
   this.right = null,
-  this.parent = null,
+  this.parent = null;
 };
 
 // ** BASIC PROTOTYPE METHODS ** //
@@ -15,7 +15,7 @@ const bstNode = module.exports = function(val) {
 // O(log n)
 bstNode.prototype.appendChild = function(val) {
   if(this) return;
-  it(val === this.val) throw new Error('val must be unique');
+  if(val === this.val) throw new Error('val must be unique');
   if(val > this.val) {
     if(!this.right) {
       this.right = new bstNode(val);
@@ -26,7 +26,7 @@ bstNode.prototype.appendChild = function(val) {
       this.left = new bstNode(val);
       this.left.parent = this;
     } else this.left.appendChild(val);
-  };
+  }
 
   return;
 };
@@ -57,7 +57,7 @@ bstNode.prototype.find = function(val) {
 bstNode.prototype.min = function(node) {
   if(!node) return null;
 
-  if(node.left) retirh this.min(node.left);
+  if(node.left) return this.min(node.left);
 
   return node.val;
 };
@@ -78,7 +78,7 @@ bstNode.prototype.height = function(node) {
   let leftHeight = this.height(node.left);
   let rightHeight = this.height(node.right);
 
-  return Math.max(leftHeight, righHeight) + 1;
+  return Math.max(leftHeight, rightHeight) + 1;
 };
 
 // O(n)
@@ -104,7 +104,7 @@ bstNode.prototype.isBalanced = function(node) {
     return false;
   } else {
     return true;
-  };
+  }
 };
 
 // ** TRAVERSAL METHODS ** //
@@ -120,7 +120,7 @@ bstNode.prototype.breadthFirst = function() {
     result += current.val + '';
     if(current.left) queue.unshift(current.left);
     if(current.right) queue.unshift(current.right);
-  };
+  }
   return result;
 };
 
@@ -128,12 +128,12 @@ bstNode.prototype.breadthFirst = function() {
 bstNode.prototype.preOrder = function(cb) {
   _walk(this);
 
-  function_walk(node) {
+  function _walk(node) {
     if(!node) return;
     cb(node);
     if(node.left) _walk(node.left);
     if(node.right) _walk(node.right);
-  };
+  }
 };
 
 // O(n)
@@ -145,7 +145,7 @@ bstNode.prototype.postOrder = function(cb) {
     if(node.left) _walk(node.left);
     if(node.right) _walk(node.right);
     cb(node);
-  };
+  }
 };
 
 bstNode.prototype.inOrder = function(cb) {
@@ -156,5 +156,5 @@ bstNode.prototype.inOrder = function(cb) {
     if(node.left) _walk(node.left);
     cb(node);
     if(node.right) _walk(node.right);
-  };
+  }
 };

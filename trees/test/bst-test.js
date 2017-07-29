@@ -55,7 +55,7 @@ describe('Testing binary search tree methods', function() {
     });
   });
 
-  describe('Testing the contains method', function() => {
+  describe('Testing the contains method', function() {
     bst.appendChild(25);
     bst.appendChild(6);
     bst.appendChild(9);
@@ -180,6 +180,81 @@ describe('Testing binary search tree methods', function() {
   describe('Testing the height method', () => {
     it('should return the height of the tree', done => {
       expect(bst.height(bst)).to.equal(8);
+      done();
+    });
+  });
+
+  describe('Testing the fromArray method', () => {
+    let arrayBST = new BST(51);
+    BST.fromArray(arrayBST, [26, 6, 9, 16, 93, 64, 55]);
+
+    it('should contain the nodes that were in the array', done => {
+      expect(arrayBST.contains(51)).to.be.true;
+      expect(arrayBST.val).to.equal(51);
+
+      expect(arrayBST.contains(25)).to.be.true;
+      expect(arrayBST.left.val).to.equal(25);
+
+      expect(arrayBST.contains(6)).to.be.true;
+      expect(arrayBST.left.left.val).to.equal(6);
+
+      expect(arrayBST.contains(9)).to.be.true;
+      expect(arrayBST.left.left.right.val).to.equal(9);
+
+      expect(arrayBST.contains(15)).to.be.true;
+      expect(arrayBST.left.left.right.right.val).to.equal(15);
+
+      expect(arrayBST.contains(93)).to.be.true;
+      expect(arrayBST.right.val).to.equal(93);
+
+      expect(arrayBST.contains(64)).to.be.true;
+      expect(arrayBST.right.left.val).to.equal(64);
+
+      expect(arrayBST.contains(55)).to.be.true;
+      expect(arrayBST.right.left.left.val).to.equal(55);
+      done();
+    });
+
+    it('should not contain any nodes that were not in the array', done => {
+      expect(arrayBST.contains(50)).to.be.false;
+      expect(arrayBST.contains(99)).to.be.false;
+      expect(arrayBST.contains(2)).to.be.false;
+      done();
+    });
+
+    it('should return the correct height', done => {
+      expect(arrayBST.height(arrayBST)).to.equal(5);
+      done();
+    });
+
+    it('should return the correct minimum value', done => {
+      expect(arrayBST.min(arrayBST)).to.equal(6);
+      expect(arrayBST.min(arrayBST)).to.not.equal(36);
+      done();
+    });
+
+    it('should return the correct maximum value', done => {
+      expect(arrayBST.max(arrayBST)).to.equal(93);
+      expect(arrayBST.max(arrayBST)).to.not.equal(9);
+      done();
+    });
+
+    it('should be traversed, breadth-first', done => {
+      expect(arrayBST.breadthFirst()).to.equal('51 25 93 6 64 9 55 15 ');
+      done();
+    });
+
+    it('should be able to detect the height and determine if the tree is balanced', done => {
+      expect(arrayBST.isBalanced(arrayBST)).to.be.true;
+      done();
+    });
+
+    it('should no longer be balanced when additional nodes are added to one side', done => {
+      arrayBST.appendChild(65);
+      arrayBST.appendChild(70);
+      arrayBST.appendChild(75);
+      arrayBST.appendChild(90);
+      expect(arrayBST.isBalanced(arrayBST)).to.be.false;
       done();
     });
   });
