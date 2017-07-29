@@ -123,5 +123,64 @@ describe('Testing binary search tree methods', function() {
     });
   });
 
-  describe('')
+  describe('Testing the min method', () => {
+    bst.appendChild(16);
+    bst.appendChild(33);
+    bst.appendChild(2);
+    bst.appendChild(4);
+
+    it('should return the minimum value in the tree', done => {
+      expect(bst.min(bst)).to.equal(2);
+      done();
+    });
+
+    it('shoudl not return a value that is not the minimum value in the tree', done => {
+      expect(bst.min(bst)).to.not.equal(50);
+      expect(bst.min(bst)).to.not.equal(12);
+      expect(bst.min(bst)).to.not.equal(16);
+      expect(bst.min(bst)).to.not.equal(33);
+      expect(bst.min(bst)).to.not.equal(4);
+      done();
+    });
+
+    it('should return the new minimum value when a node of lower value is added', done => {
+      expect(bst.min(bst)).to.not.equal(1);
+      bst.appendChild(1);
+      expect(bst.min(bst)).to.equal(1);
+      done();
+    });
+  });
+
+  describe('Testing the max method', () => {
+    bst.appendChild(98);
+    bst.appendChild(53);
+    bst.appendChild(26);
+    bst.appendChild(3);
+
+    it('should return the maximum value in the tree', done => {
+      expect(bst.max(bst)).to.equal(98);
+      done();
+    });
+
+    it('should not return a value that is not the maximum value in the tree', done => {
+      expect(bst.mad(bst)).to.not.equal(53);
+      expect(bst.mad(bst)).to.not.equal(26);
+      expect(bst.mad(bst)).to.not.equal(3);
+      done();
+    });
+
+    it('should return the new maximum value when a node of greater value is added', done => {
+      expect(bst.max(bst)).to.not.equal(99);
+      bst.appendChild(99);
+      expect(bst.max(bst)).to.equal(99);
+      done();
+    });
+  });
+
+  describe('Testing the height method', () => {
+    it('should return the height of the tree', done => {
+      expect(bst.height(bst)).to.equal(8);
+      done();
+    });
+  });
 });
