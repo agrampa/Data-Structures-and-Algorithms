@@ -103,4 +103,25 @@ describe('Testing binary search tree methods', function() {
       done();
     });
   });
+
+  describe('Testing the find method', () => {
+    it('should find nodes that exist in the tree', done => {
+      expect(bst.find(64)).to.have.valueOf(64);
+      done();
+    });
+
+    it('should not find nodes that do not exist in the tree', done => {
+      expect(bst.find(86)).to.not.have.valueOf(86);
+      done();
+    });
+
+    it('should not find a node until it is added', done => {
+      expect(bst.find(13)).to.not.have.valueOf(13);
+      bst.appendChild(13);
+      expect(bst.find(13)).to.have.valueOf(13);
+      done();
+    });
+  });
+
+  describe('')
 });
