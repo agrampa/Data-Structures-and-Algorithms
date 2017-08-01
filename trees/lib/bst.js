@@ -107,6 +107,41 @@ bstNode.prototype.isBalanced = function(node) {
   }
 };
 
+// ** ROTATIONS ** //
+bstNode.prototype.rotateRight(node) {
+  if(!node) return;
+
+  let temp = node.right;
+  node.right = temp.left;
+  temp.left = node;
+
+  return temp;
+}
+
+bstNode.prototype.rotateLeft(node) {
+  if(!node) return;
+
+  let temp = node.left;
+  node.left = temp.right;
+  temp.right = node;
+
+  return temp;
+}
+
+bstNode.prototype.rotateLR(node) {
+  if(!node) return;
+
+  node.left = rotateRight(node.left);
+  return rotateLeft(node);
+}
+
+bstNode.prototype.rotateRL(node) {
+  if(!node) return;
+
+  node.right = rotateLeft(node.right);
+  return rotateRight(node);
+}
+
 // ** TRAVERSAL METHODS ** //
 
 // O(n)
