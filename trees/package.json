@@ -1,0 +1,20 @@
+{
+  "name": "trees",
+  "version": "1.0.0",
+  "description": "The purpose of this repository is to create binary search trees and utilize methods on these trees. Binary search trees are defined as a tree data structure where each node has 0, 1, or 2 children, but no more. The tree is organized in a way so that the left child has a value that is lower than its parent and the right child has a value that is greater than its parent. When new nodes are added, this pattern is followed and the node is added at the appropriate depth to maintain the binary nature of the tree.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
