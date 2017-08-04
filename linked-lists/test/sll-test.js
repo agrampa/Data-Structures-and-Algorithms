@@ -56,6 +56,24 @@ describe('Testing the single linked-list methods', function() {
 
 
   describe('Testing the prepend method', function() {
+    it('should not include the value before prepending', done => {
+      expect(sll).to.not.have.valueOf(4);
+      done();
+    });
 
+    it('should add a value to the list', done => {
+      sll.prepend(4);
+      expect(sll).to.have.valueOf(4);
+      done();
+    });
+
+    it('should contain the prepended value at the beginning of the linked list', done => {
+      expect(sll.head).to.equal.valueOf(4);
+      done();
+    });
   });
+
+  describe('Testing the remove method', done => {
+    
+  })
 });
