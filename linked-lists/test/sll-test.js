@@ -102,4 +102,52 @@ describe('Testing the single linked-list methods', function() {
       done();
     });
   });
+
+  describe('Testing the reverse method', function() {
+    describe('Checking the starting order', function() {
+      let sllReverse = new SLL();
+      sllReverse.append(1).append(2).append(3).append(4);
+
+      it('should append a value of 1', done => {
+        expect(sllReverse.head).to.equal.valueOf(1);
+        done();
+      });
+
+      it('should append a value of 2', done => {
+        expect(sllReverse.head.next).to.equal.valueOf(2);
+        done();
+      });
+
+      it('should append a value of 3', done => {
+        expect(sllReverse.head.next.next).to.equal.valueOf(3);
+        done();
+      });
+
+      it('should append a value of 4', done => {
+        expect(sllReverse.head.next.next.next).to.equal.valueOf(4);
+        done();
+      });
+    });
+
+    describe('Checking the reversal', () => {
+      sllReverse.reverse();
+
+      it('should now begin with 4', done => {
+        expect(sllReverse.head).to.equal.valueOf(4);
+        done();
+      });
+      it('should then have a value of 3', done => {
+        expect(sllReverse.head.next).to.equal.valueOf(3);
+        done();
+      });
+      it('should then have a value of 2', done => {
+        expect(sllReverse.head.next.next).to.equal.valueOf(2);
+        done();
+      });
+      it('should then have a value of 1', done => {
+        expect(sllReverse.head.next.next.next).to.equal.valueOf(1);
+        done();
+      });
+    });
+  });
 });
