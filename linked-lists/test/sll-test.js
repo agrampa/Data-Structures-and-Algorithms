@@ -74,6 +74,32 @@ describe('Testing the single linked-list methods', function() {
   });
 
   describe('Testing the remove method', done => {
-    
-  })
+    sll.append(3).append(6).append(1).append(9);
+
+    it('should contain the value before the remove method was applied', done => {
+      expect(sll.head.next).to.equal.valueOf(6);
+      expect(sll).to.have.valueOf(6);
+      done();
+    });
+
+    sll.remove(6);
+
+    it('should not contain the value after the remove method was applied', done => {
+      expect(sll).to.not.have.valueOf(6);
+      done();
+    });
+
+    it('should contain other values prior to removal', done => {
+      expect(sll).to.have.valueOf(9);
+      expect(sll.head.next.next.next).to.equal.valueOf(9);
+      done();
+    });
+
+    sll.remove(9);
+
+    it('should remove additional values', done => {
+      expect(sll).to.not.have.valueOf(9);
+      done();
+    });
+  });
 });
