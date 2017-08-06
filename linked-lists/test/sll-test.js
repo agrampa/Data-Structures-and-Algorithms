@@ -150,4 +150,26 @@ describe('Testing the single linked-list methods', function() {
       });
     });
   });
+
+  describe('Testing removal of a specific node', () => {
+    it('should contain the value before the method was applied', done => {
+      expect(sllReverse).to.have.valueOf(2);
+      expect(sllReverse).to.have.valueOf(3);
+      done();  
+    });
+
+    sllReverse.removeSpecificNode(3);
+
+    it('should not include the value after the method was applied', done => {
+      expect(sllReverse).to.not.have.valueOf(3);
+      done();
+    });
+
+    sllReverse.removeSpecificNode(2);
+
+    it('should remove another node when called again', done => {
+      expect(sllReverse).to.not.have.valueOf(2);
+      done();
+    };
+  });
 });
