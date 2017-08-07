@@ -24,3 +24,27 @@ let recursiveMultiplier = function(arr, num) {
   arr.push(last * num);
   return arr;
 }
+
+// TASK: implement a min stack
+
+function minStack(capacity) {
+  this.capacity = capacity;
+  this.storage = {};
+  this.count = 0;
+  this.min = new Stack();
+}
+
+// O(1)
+MinStack.prototype.push = value => {
+  if(this.count < this.capacity) {
+    if(this.min.peek() < value) {
+      this.min.push(this.min.peek());
+    } else {
+      this.min.push(value);
+    }
+
+    this.storage[this.count++] = value;
+    return this.count;
+  }
+  return 'Max capacity already reached. Remove a value before adding a new one.';
+}
