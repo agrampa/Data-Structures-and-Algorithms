@@ -13,3 +13,14 @@ let recursionReverse = function(arr) {
 
   return reversedArray;
 }
+
+// TASK: write a function called recursiveMultiplier that takes two arguments, 'arr' and 'num', and multiplies each arr value by num and returns an array of the values
+
+let recursiveMultiplier = function(arr, num) {
+  if(arr.length === 0) return arr;
+
+  let last = arr.pop();
+  recursiveMultiplier(arr, num);
+  arr.push(last * num);
+  return arr;
+}
