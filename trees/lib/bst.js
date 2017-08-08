@@ -195,6 +195,17 @@ bstNode.prototype.inOrder = function(cb) {
 };
 
 // Demo code from Front End Masters
+
+bstNode.prototype.updateInNewLocation = function() {
+  if(!this.right && !this.left) {
+    this.height = 1;
+  } else if (!this.right || (this.left && this.right.height < this.left.height)) {
+    this.height = this.left.height + 1;
+  } else { // if(!this.left || this.right.height > this.left.height)
+    this.height = this.right.height + 1;
+  }
+}
+
 bstNode.prototype.rotateRR = function() {
   const valueBefore = this.value;
   const leftBefore = this.left;
