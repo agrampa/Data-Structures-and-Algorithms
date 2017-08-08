@@ -210,5 +210,14 @@ bstNode.prototype.rotateRR = function() {
 };
 
 bstNode.prototype.rotateLL = function() {
-  
+  const valueBefore = this.value;
+  this.rightBefore = this.right;
+  this.value = this.left.value;
+  this.right = this.left;
+  this.left = this.left.left;
+  this.right.left = this.right.right;
+  this.right.right = rightBefore;
+  this.right.value = valueBefore;
+  this.right.updateInNewLocation();
+  this.updateInNewLocation();
 }
