@@ -193,3 +193,42 @@ bstNode.prototype.inOrder = function(cb) {
     if(node.right) _walk(node.right);
   }
 };
+
+// Demo code from Front End Masters
+
+bstNode.prototype.updateInNewLocation = function() {
+  if(!this.right && !this.left) {
+    this.height = 1;
+  } else if (!this.right || (this.left && this.right.height < this.left.height)) {
+    this.height = this.left.height + 1;
+  } else { // if(!this.left || this.right.height > this.left.height)
+    this.height = this.right.height + 1;
+  }
+}
+
+bstNode.prototype.rotateRR = function() {
+  const valueBefore = this.value;
+  const leftBefore = this.left;
+
+  this.value = this.right.value;
+  this.left = this.right;
+  this.right = this.right.right;
+  this.left.right = this.left.left;
+  this.left.left = leftBefore;
+  this.left.value = valueBefore;
+  this.left.updateInNewLocation();
+  this.updateInNewLocation();
+};
+
+bstNode.prototype.rotateLL = function() {
+  const valueBefore = this.value;
+  this.rightBefore = this.right;
+  this.value = this.left.value;
+  this.right = this.left;
+  this.left = this.left.left;
+  this.right.left = this.right.right;
+  this.right.right = rightBefore;
+  this.right.value = valueBefore;
+  this.right.updateInNewLocation();
+  this.updateInNewLocation();
+}
