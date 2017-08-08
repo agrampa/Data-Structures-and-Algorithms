@@ -193,3 +193,22 @@ bstNode.prototype.inOrder = function(cb) {
     if(node.right) _walk(node.right);
   }
 };
+
+// Demo code from Front End Masters
+bstNode.prototype.rotateRR = function() {
+  const valueBefore = this.value;
+  const leftBefore = this.left;
+
+  this.value = this.right.value;
+  this.left = this.right;
+  this.right = this.right.right;
+  this.left.right = this.left.left;
+  this.left.left = leftBefore;
+  this.left.value = valueBefore;
+  this.left.updateInNewLocation();
+  this.updateInNewLocation();
+};
+
+bstNode.prototype.rotateLL = function() {
+  
+}
