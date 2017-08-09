@@ -10,6 +10,7 @@
 
 // TASK: Write a bubble sort function to compare two adjacent numbers and then swap their places if the smaller index's value is larger than the larger index's value. Continue looping until all numbers are in order
 
+// O(n^2)
 const bubbleSort = nums => {
   do {
     let swapped = false;
