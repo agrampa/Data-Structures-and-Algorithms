@@ -12,8 +12,9 @@
 
 // O(n^2)
 const bubbleSort = nums => {
+  let swapped
   do {
-    let swapped = false
+    swapped = false
     for(let i = 0; i < nums.length; i++) {
       if (nums[i] > nums[i+1]) {
         const temp = nums[i]
