@@ -6,7 +6,7 @@
 // outer loop starts at 1 because you are starting with one item, and everything after index 0 is unsorted
 
 // O(n) is best case, O(n^2) is worst case
-let insertionSort = nums => {
+const insertionSort = nums => {
   for(let i = 1; i < nums.length; i++) {
     for(let j = 0; j < i; j++) {
       if(nums[i] < nums[j]) {
@@ -15,4 +15,5 @@ let insertionSort = nums => {
       }
     }
   }
+  return nums
 }
