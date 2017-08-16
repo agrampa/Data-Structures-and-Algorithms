@@ -12,6 +12,7 @@ bstNode.prototype.breadthFirst = () => {
   return result
 }
 
+// visit root -> left subtree -> right subtree
 bstNode.prototype.preOrder = cb => {
   _walk(this)
 
@@ -23,6 +24,7 @@ bstNode.prototype.preOrder = cb => {
   }
 }
 
+// visit left subtree -> right subtree -> root
 bstNode.prototype.postOrder = cb => {
   _walk(this)
 
@@ -34,6 +36,7 @@ bstNode.prototype.postOrder = cb => {
   }
 }
 
+// visit left subtree -> root -> right subtree
 bstNode.prototype.inOrder = cb => {
   _walk(this)
 
